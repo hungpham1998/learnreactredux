@@ -1,4 +1,4 @@
-import {ADD_PRODUCT_TO_CART,REMOVE_PRODUCT_ID,REMOVE_PRODUCT_FROM_CART,SEARCH_PRODUCT, ADD_PRODUCT} from './typeaction';
+import {ADD_PRODUCT_TO_CART,REMOVE_PRODUCT_ID,REMOVE_PRODUCT_FROM_CART,SEARCH_PRODUCT, ADD_PRODUCT, UPDATE_PRODUCT} from './typeaction';
 
 const initialState = {
   products: [
@@ -61,20 +61,22 @@ const shopReducer = (state = initialState, action) => {
         item.id === action.payload.id
       )
       products.splice(data,1)
+      localStorage.setItem("updatedCart", JSON.stringify(updatedCart))
       return {...state , products: [...products]};
 
     case SEARCH_PRODUCT:
       const filter = action.payload.toLowerCase()
-      return {
-        ...state,
-        filter: filter,
-        products: filter
-            ? products.filter(
-              products =>
-              products.title.toLowerCase().indexOf(filter) > -1,
-            )
-            : products,
-      };
+        return {
+          ...state,
+          filter: filter,
+          products: filter
+              ? products.filter(
+                products =>
+                products.title.toLowerCase().indexOf(filter) > -1,
+              )
+              : products,
+        };
+      
     case ADD_PRODUCT:
        let newproduct = action.payload
        products = products.concat(newproduct);
@@ -83,6 +85,13 @@ const shopReducer = (state = initialState, action) => {
          ...state,
          products: products
        }
+    case UPDATE_PRODUCT: 
+     let product = products.map((item) => item.id ===  action.payload.id ? {...item, ...action.payload}: item)
+       localStorage.setItem("products", JSON.stringify(product))
+       return { 
+        ...state, 
+        products: product
+     }
     default:
       return state;
   }

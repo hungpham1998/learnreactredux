@@ -16,8 +16,8 @@ class CartPage extends Component {
             {this.props.cartItems.map(cartItem => (
               <li key={cartItem.id}>
                 <div>
-                  <strong>{cartItem.title}</strong> - ${cartItem.price} (
-                  {cartItem.quantity})
+                  <strong>{cartItem.title}</strong> - ${cartItem.price} 
+                  <strong> số lượng {cartItem.quantity} </strong> 
                 </div>
                 <div>
                   <button

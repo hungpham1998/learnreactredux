@@ -1,4 +1,4 @@
-import {ADD_PRODUCT_TO_CART,REMOVE_PRODUCT_FROM_CART,REMOVE_PRODUCT_ID,SEARCH_PRODUCT, ADD_PRODUCT}  from './typeaction';
+import {ADD_PRODUCT_TO_CART,REMOVE_PRODUCT_FROM_CART,REMOVE_PRODUCT_ID,SEARCH_PRODUCT, ADD_PRODUCT,UPDATE_PRODUCT}  from './typeaction';
 export const addProductToCart = product => {
   return dispatch => {
     setTimeout(() => {
@@ -22,7 +22,6 @@ export const removeProductFromCart = productId => {
   };
 
   export const removeProduct = productId =>{
-    console.log(productId)
     return dispatch =>{
       setTimeout(()=>
       {
@@ -44,7 +43,6 @@ export const removeProductFromCart = productId => {
     };
   };
   export const addProduct = product => {
-    console.log(product)
     return dispatch =>{
     setTimeout(()=> dispatch({
         type:ADD_PRODUCT,
@@ -52,3 +50,11 @@ export const removeProductFromCart = productId => {
       }),500);
     };
   };
+  export const updateProduct = product =>{
+    return dispatch =>{
+      setTimeout(()=> dispatch({
+          type:UPDATE_PRODUCT,
+          payload: product
+        }),500);
+      };
+  }

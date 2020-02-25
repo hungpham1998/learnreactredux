@@ -5,3 +5,4 @@ export const SEARCH_PRODUCT = 'SEARCH_PRODUCT';
 export const DISPLAY_FORM = 'DISPLAY_FORM';
 export const HIDDEN_FORM = 'HIDDEN_FORM';
 export const ADD_PRODUCT = 'ADD_PRODUCT';
+export const UPDATE_PRODUCT= 'UPDATE_PRODUCT';
